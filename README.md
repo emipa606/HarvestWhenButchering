@@ -1,12 +1,13 @@
 # HarvestWhenButchering
 
-
 ![Image](https://i.imgur.com/buuPQel.png)
 
 
 **Triggers harvesting of resources when butchering**
 
 Any resource that can be harvested from an animal will be harvested when butchering a dead animal.
+
+To be able to harvest resources from animals that explode on death you can use https://steamcommunity.com/sharedfiles/filedetails/?id=2359846788]BoomMod Expanded or similar mod.
 
 Idea by: DisKorruptd
 
@@ -29,4 +30,4 @@ https://ko-fi.com/G2G55DDYD]![Image](https://i.imgur.com/Utx6OIH.png)
 -  If you have the solution for a problem, please post it to the GitHub repository.
 
 
-https://steamcommunity.com/sharedfiles/filedetails/changelog/2863019550]Last updated YYYY-12-27
+https://steamcommunity.com/sharedfiles/filedetails/changelog/2898826891]Last updated 2022-12-08

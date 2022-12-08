@@ -1,4 +1,7 @@
 # Changelog for HarvestWhenButchering
 
+1.4.1 - Added a 1.3 version on request
+
+
 1.4.0 - First publish
 
