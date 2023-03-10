@@ -21,7 +21,13 @@ public static class Pawn_ButcherProducts
             return;
         }
 
-        var i = GenMath.RoundRandom(comp.ResourceAmount * comp.fullness * efficiency);
+        var baseValue = comp.ResourceAmount * comp.fullness * efficiency;
+        if (comp.parent is not Pawn pawn || pawn.Faction?.IsPlayer == false)
+        {
+            baseValue *= HarvestWhenButcheringMod.instance.Settings.WildAnimalFactor;
+        }
+
+        var i = GenMath.RoundRandom(baseValue);
         while (i > 0)
         {
             var num = Mathf.Clamp(i, 1, comp.ResourceDef.stackLimit);
