@@ -50,7 +50,7 @@ internal class HarvestWhenButcheringMod : Mod
         listing_Standard.Begin(rect);
         listing_Standard.Gap();
         listing_Standard.Label("HWB.WildAnimalFactor".Translate(), -1, "FHWB.WildAnimalFactorTT".Translate());
-        Settings.WildAnimalFactor = Widgets.HorizontalSlider_NewTemp(listing_Standard.GetRect(20),
+        Settings.WildAnimalFactor = Widgets.HorizontalSlider(listing_Standard.GetRect(20),
             Settings.WildAnimalFactor, 0, 1f, false, Settings.WildAnimalFactor.ToStringPercent());
         if (currentVersion != null)
         {
