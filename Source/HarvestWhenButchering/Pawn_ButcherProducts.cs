@@ -10,38 +10,39 @@ namespace HarvestWhenButchering;
 [HarmonyPatch(typeof(Pawn), nameof(Pawn.ButcherProducts))]
 public static class Pawn_ButcherProducts
 {
-    private static readonly MethodInfo activeMethod =
-        AccessTools.PropertyGetter(typeof(CompHasGatherableBodyResource), "Active");
-
     private static readonly MethodInfo resourceAmountMethod =
         AccessTools.PropertyGetter(typeof(CompHasGatherableBodyResource), "ResourceAmount");
 
-    private static readonly FieldInfo fullnessField =
-        AccessTools.Field(typeof(CompHasGatherableBodyResource), "fullness");
-
-    private static readonly FieldInfo resourceDefField =
-        AccessTools.Field(typeof(CompHasGatherableBodyResource), "ResourceDef");
+    private static readonly MethodInfo resourceDefField =
+        AccessTools.PropertyGetter(typeof(CompHasGatherableBodyResource), "ResourceDef");
 
     private static void gather(CompHasGatherableBodyResource comp, Pawn doer, float efficiency)
     {
-        if ((bool)activeMethod.Invoke(comp, null) == false)
+        var animalYield = doer.GetStatValue(StatDefOf.AnimalGatherYield);
+        if (!Rand.Chance(animalYield))
         {
             return;
         }
 
-        if (!Rand.Chance(doer.GetStatValue(StatDefOf.AnimalGatherYield)))
+        var baseValue = (int)resourceAmountMethod.Invoke(comp, null) * comp.Fullness * efficiency;
+
+        if (comp.parent is not Pawn pawn || pawn.Faction == null || pawn.Suspended)
         {
             return;
         }
 
-        var baseValue = (int)resourceAmountMethod.Invoke(comp, null) * (float)fullnessField.GetValue(comp) * efficiency;
-        if (comp.parent is not Pawn pawn || pawn.Faction?.IsPlayer == false)
+        if (pawn.Faction?.IsPlayer == false)
         {
             baseValue *= HarvestWhenButcheringMod.instance.Settings.WildAnimalFactor;
         }
 
         var i = GenMath.RoundRandom(baseValue);
-        var resourceDef = (ThingDef)resourceDefField.GetValue(comp);
+        var resourceDef = (ThingDef)resourceDefField.Invoke(comp, null);
+        if (resourceDef == null)
+        {
+            return;
+        }
+
         while (i > 0)
         {
             var num = Mathf.Clamp(i, 1, resourceDef.stackLimit);
