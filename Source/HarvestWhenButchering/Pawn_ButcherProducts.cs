@@ -33,7 +33,7 @@ public static class Pawn_ButcherProducts
 
         if (pawn.Faction?.IsPlayer == false)
         {
-            baseValue *= HarvestWhenButcheringMod.instance.Settings.WildAnimalFactor;
+            baseValue *= HarvestWhenButcheringMod.Instance.Settings.WildAnimalFactor;
         }
 
         var i = GenMath.RoundRandom(baseValue);

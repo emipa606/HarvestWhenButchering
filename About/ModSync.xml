@@ -2,7 +2,7 @@
 <ModSyncNinjaData>
   <ID>c39ceb13-0fb3-4d70-88ff-92bbcd382c7e</ID>
   <ModName>Harvest When Butchering</ModName>
-  <Version>1.5.1</Version>
+  <Version>1.6.0</Version>
   <SaveBreaking>False</SaveBreaking>
   <Host name="Github">
     <Owner>emipa606</Owner>
@@ -12,3 +12,4 @@
     <Branch>master</Branch>
   </Host>
 </ModSyncNinjaData>
+

@@ -10,7 +10,7 @@ internal class HarvestWhenButcheringMod : Mod
     /// <summary>
     ///     The instance of the settings to be read by the mod
     /// </summary>
-    public static HarvestWhenButcheringMod instance;
+    public static HarvestWhenButcheringMod Instance;
 
     private static string currentVersion;
 
@@ -20,7 +20,7 @@ internal class HarvestWhenButcheringMod : Mod
     /// <param name="content"></param>
     public HarvestWhenButcheringMod(ModContentPack content) : base(content)
     {
-        instance = this;
+        Instance = this;
         Settings = GetSettings<HarvestWhenButcheringSettings>();
         currentVersion = VersionFromManifest.GetVersionFromModMetaData(content.ModMetaData);
     }
@@ -46,20 +46,20 @@ internal class HarvestWhenButcheringMod : Mod
     /// <param name="rect"></param>
     public override void DoSettingsWindowContents(Rect rect)
     {
-        var listing_Standard = new Listing_Standard();
-        listing_Standard.Begin(rect);
-        listing_Standard.Gap();
-        listing_Standard.Label("HWB.WildAnimalFactor".Translate(), -1, "FHWB.WildAnimalFactorTT".Translate());
-        Settings.WildAnimalFactor = Widgets.HorizontalSlider(listing_Standard.GetRect(20),
+        var listingStandard = new Listing_Standard();
+        listingStandard.Begin(rect);
+        listingStandard.Gap();
+        listingStandard.Label("HWB.WildAnimalFactor".Translate(), -1, "FHWB.WildAnimalFactorTT".Translate());
+        Settings.WildAnimalFactor = Widgets.HorizontalSlider(listingStandard.GetRect(20),
             Settings.WildAnimalFactor, 0, 1f, false, Settings.WildAnimalFactor.ToStringPercent());
         if (currentVersion != null)
         {
-            listing_Standard.Gap();
+            listingStandard.Gap();
             GUI.contentColor = Color.gray;
-            listing_Standard.Label("HWB.CurrentModVersion".Translate(currentVersion));
+            listingStandard.Label("HWB.CurrentModVersion".Translate(currentVersion));
             GUI.contentColor = Color.white;
         }
 
-        listing_Standard.End();
+        listingStandard.End();
     }
 }

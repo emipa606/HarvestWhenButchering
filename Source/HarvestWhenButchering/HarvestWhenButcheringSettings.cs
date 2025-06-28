@@ -7,7 +7,7 @@ namespace HarvestWhenButchering;
 /// </summary>
 internal class HarvestWhenButcheringSettings : ModSettings
 {
-    public bool UseButcherLogic = true;
+    private bool useButcherLogic = true;
     public float WildAnimalFactor = 1f;
 
     /// <summary>
@@ -16,7 +16,7 @@ internal class HarvestWhenButcheringSettings : ModSettings
     public override void ExposeData()
     {
         base.ExposeData();
-        Scribe_Values.Look(ref UseButcherLogic, "UseButcherLogic", true);
+        Scribe_Values.Look(ref useButcherLogic, "UseButcherLogic", true);
         Scribe_Values.Look(ref WildAnimalFactor, "WildAnimalFactor", 1f);
     }
 }
