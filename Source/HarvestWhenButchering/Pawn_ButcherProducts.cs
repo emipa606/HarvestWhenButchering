@@ -18,13 +18,27 @@ public static class Pawn_ButcherProducts
 
     private static void gather(CompHasGatherableBodyResource comp, Pawn doer, float efficiency)
     {
-        var animalYield = doer.GetStatValue(StatDefOf.AnimalGatherYield);
-        if (!Rand.Chance(animalYield))
+        if (doer is null)
         {
             return;
         }
 
         var baseValue = (int)resourceAmountMethod.Invoke(comp, null) * comp.Fullness * efficiency;
+
+        var animalYield = 1f;
+        try
+        {
+            animalYield = doer.GetStatValue(StatDefOf.AnimalGatherYield);
+        }
+        catch
+        {
+            //ignored
+        }
+
+        if (!Rand.Chance(animalYield))
+        {
+            return;
+        }
 
         if (comp.parent is not Pawn pawn || pawn.Faction == null || pawn.Suspended)
         {
