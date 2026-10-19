@@ -1,5 +1,8 @@
 # Changelog for HarvestWhenButchering
 
+1.7.0 - Mod updated for 1.7 and passed autotests
+
+
 1.6.1 - Should now also work when a non-pawn does the butchering
 
 

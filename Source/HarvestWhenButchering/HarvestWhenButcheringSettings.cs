@@ -7,8 +7,8 @@ namespace HarvestWhenButchering;
 /// </summary>
 internal class HarvestWhenButcheringSettings : ModSettings
 {
-    private bool useButcherLogic = true;
     public float WildAnimalFactor = 1f;
+    private bool useButcherLogic = true;
 
     /// <summary>
     ///     Saving and loading the values

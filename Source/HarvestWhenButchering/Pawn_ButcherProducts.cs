@@ -23,7 +23,7 @@ public static class Pawn_ButcherProducts
             return;
         }
 
-        var baseValue = (int)resourceAmountMethod.Invoke(comp, null) * comp.Fullness * efficiency;
+        var baseValue = (int)(resourceAmountMethod.Invoke(comp, null) ?? 1) * comp.Fullness * efficiency;
 
         var animalYield = 1f;
         try
